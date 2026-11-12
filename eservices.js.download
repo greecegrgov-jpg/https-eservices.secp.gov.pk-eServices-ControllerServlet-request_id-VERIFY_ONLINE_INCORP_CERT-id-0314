@@ -1,0 +1,1884 @@
+function isValidEmailAddress(inputValue)
+{
+	var Val=inputValue;
+	var uslastindex;
+	var atcount = 0;
+	// alert("entry");
+	if(inputValue.length > 50){
+		alert('Email length should be less than 50 Characters');
+		return false;
+	}
+	for(var j=0; j<Val.length; j++)
+	{
+	  	var ch = Val.charAt(j);
+		if(ch == '@'){
+			atcount++;
+			if(atcount > 1){
+				alert("More than one @ in email address are not valid");
+				return false;
+			}
+		}
+		if(ch == '_')
+			uslastindex = j;
+		if( !((ch>='0' && ch<='9')||(ch>='a' && ch<='z') || (ch=='@') || (ch == '.' ) || (ch == '_' ) ||(ch == '-' ) ))
+		{
+			// alert("Invalid Chars")
+			return false;
+		}
+		if((ch=='@') || (ch=='.')){
+			if ((j+1) <= (Val.length-1)){
+			ch = Val.charAt((j+1));
+				if( !((ch>='0' && ch<='9') || (ch>='a' && ch<='z')))
+				{
+					// alert("WRONG VALUE");
+					return false;
+				}
+			}else {
+				// alert("at the end")
+				return false;
+			}
+		}
+	}
+	
+	if(uslastindex > inputValue.indexOf('@')){
+		return false;
+	} 
+
+	return true;
+}
+function isValidEmailAddressMnd(inputValue)
+{
+	var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+	   var address = inputValue.value;
+	   if(reg.test(address) == false) {
+	 
+	      alert('Please enter valid Email Address');
+	      inputValue.focus();
+	      return false;
+	   }
+	   
+	   return true;
+
+} 
+
+function isValidNominalAmntPerShare(value){ 
+	if( value < 0 ) {
+		alert('Per Share value should be greater than zero');
+		return false;
+	}
+	if(!isInteger(value))
+	{
+		alert('Invalid value!! Rs. per share');
+		return false;		
+	}
+	/*if (value % 10!=0) {
+		alert('Per Share value should be a multiple of 10');
+		return false;
+	}*/
+	return true;
+}
+
+function isValidNominalAmntPerShareNonProfitCmpny(value){ 
+	
+	/*if( value <= 0 ) {
+		alert('Per Share value should be greater than zero');
+		return false;
+	}*/
+	if(!isInteger(value))
+	{
+		alert('Invalid value!! Rs. per share');
+		return false;		
+	}
+	/*if (value % 10!=0) {
+		alert('Per Share value should be a multiple of 10');
+		return false;
+	}*/
+	return true;
+}
+
+
+function isValid(Input_value)
+{
+	var Val = Input_value;
+	for(var j=0; j<Val.length; j++)
+	{
+	  	var ch = Val.charAt(j);
+	  	
+	  	if(ch=='\'' || ch=='"' ||ch=='$' ||ch=='<' ||ch=='>')
+	  		return false;	
+	}
+	
+	return true;
+}
+
+
+function isNameValid(inputValue)
+{
+	var Val=inputValue;
+
+	for(var j=0; j<Val.length; j++)
+	{
+	  	var ch = Val.charAt(j);
+
+		if( !((ch>='0' && ch<='9') || (ch>='A' && ch<='Z') || (ch>='a' && ch<='z' )|| (ch == ' ') || (ch == '.')))
+		{
+			return false;
+		}
+	}
+
+	return true;
+}
+function isNumberValid(inputValue)
+{
+	var Val=inputValue;
+
+	for(var j=0; j<Val.length; j++)
+	{
+	  	var ch = Val.charAt(j);
+
+		if( !((ch>='0' && ch<='9')) )
+		{
+			return false;
+		}
+	}
+
+	return true;
+}
+
+
+function isFilled(inputValue) {
+	
+	//inputValue is an object
+	var Val=inputValue.value;  	
+	if(Val.length < 0 || Val=='' )
+		{
+			alert('Please enter relevant data in the field');
+			inputValue.focus();
+			return false;
+		}
+
+
+	return true;
+}
+function isFilledCombo(inputValue) {
+	
+	//inputValue is an object
+	var Val=inputValue.value;  	
+	if(Val=='notSelected' )
+		{
+			alert('Please enter relevant data in the field');
+			inputValue.focus();
+			return false;
+		}
+
+
+	return true;
+}
+
+//for mandatory name field
+function isNameValidMnd(inputValue)
+{
+	//inputValue is an object
+	var Val=inputValue.value;
+	if(Val.length < 0 || Val=='' )
+	{
+		alert('Please enter relevant data in the field');
+		inputValue.focus();
+		return false;
+	}
+	for(var j=0; j<Val.length; j++)
+	{
+	  	var ch = Val.charAt(j);
+
+		if( !((ch>='0' && ch<='9') || (ch>='A' && ch<='Z') || (ch>='a' && ch<='z' )|| (ch == ' ') || (ch == '.')))
+		{
+			alert('Please use alphabets and numbers only');
+			inputValue.focus();
+			return false;
+		}
+	}
+
+	return true;
+}
+//for mandatory name field
+function isNameMnd(inputValue)
+{
+	//inputValue is an object
+	var Val=inputValue.value;
+	if(Val.length < 0 || Val=='' )
+	{
+		alert('Please enter relevant data in the field');
+		inputValue.focus();
+		return false;
+	}	
+
+	return true;
+}
+// for optional name field
+function isNameValidOpt(inputValue)
+{
+	
+	//inputValue is an object
+	var Val=inputValue.value;
+	
+	for(var j=0; j<Val.length; j++)
+	{
+	  	var ch = Val.charAt(j);
+
+		if( !((ch>='0' && ch<='9') || (ch>='A' && ch<='Z') || (ch>='a' && ch<='z' )|| (ch == ' ') || (ch == '.')))
+		{
+			alert('Please use alphabets and numbers only in'+inputValue.title);
+			inputValue.focus();
+			return false;
+		}
+	}
+
+	return true;
+}
+//for mandatory number field
+function isNumberValidMnd(inputValue)
+{
+	var Val=inputValue.value;
+
+	if(Val.length < 0 || Val=='' )
+	{
+		alert('Please enter relevant data in the field');
+		inputValue.focus();
+		return false;
+	}
+	for(var j=0; j<Val.length; j++)
+	{
+	  	var ch = Val.charAt(j);
+
+		if( !((ch>='0' && ch<='9')) )
+		{
+			alert('Please enter numeric values only');
+			inputValue.focus();
+			return false;
+		}
+	}
+
+	return true;
+}
+//for option number field
+function isNumberValidOpt(inputValue)
+{
+	var Val=inputValue.value;
+
+	
+	for(var j=0; j<Val.length; j++)
+	{
+	  	var ch = Val.charAt(j);
+
+		if( !((ch>='0' && ch<='9')) )
+		{
+			alert('Please enter numeric values only');
+			inputValue.focus();
+			return false;
+		}
+	}
+
+	return true;
+}
+function isValidResidentialAddress(inputValue)
+{
+	var Val=inputValue;
+
+	for(var j=0; j<Val.length; j++)
+	{
+	  	var ch = Val.charAt(j);
+
+		if( !((ch>='0' && ch<='9') || (ch>='A' && ch<='Z') || (ch>='a' && ch<='z' ) || (ch == ' ') || (ch == '-') || (ch == '.') || (ch == '(')|| (ch == ')')|| (ch == '#')
+				|| (ch == '/') || (ch == '\r') || (ch == '\n') || (ch == ',') ))
+		{
+			return false;
+		}
+	}
+
+	return true;
+}
+function echeck(str) {
+  var at="@"
+  var dot="."
+  var underscore = "_";
+  var lat=str.indexOf(at)
+  var lstr=str.length
+  var ldot=str.indexOf(dot)
+  var lus = str.indexOf(underscore)
+  if (str.indexOf(at)==-1){
+     alert("Invalid E-mail ID")
+     return false
+  }
+  if (str.indexOf(at)==-1 || str.indexOf(at)==0 || str.indexOf(at)==lstr){
+     alert("Invalid E-mail ID")
+     return false
+  }
+  if(lus > lat){ //if undersocre after @ then invalid emial. me@t_ry.com
+      alert("Invalid E-mail ID")
+      return false
+  }
+  if (str.indexOf(dot)==-1 || str.indexOf(dot)==0 || str.indexOf(dot)==lstr){
+      alert("Invalid E-mail ID")
+      return false
+  }
+   if (str.indexOf(at,(lat+1))!=-1){
+      alert("Invalid E-mail ID")
+      return false
+   }
+   if (str.substring(lat-1,lat)==dot || str.substring(lat+1,lat+2)==dot){
+      alert("Invalid E-mail ID")
+      return false
+   }
+   if (str.indexOf(dot,(lat+2))==-1){
+      alert("Invalid E-mail ID")
+      return false
+   }
+   if (str.indexOf(" ")!=-1){
+      alert("Invalid E-mail ID")
+      return false
+   }
+   return true          
+}
+
+//For formA jsp
+function insertTrnsfrShareDebuntureRow(){
+	
+	var rows = trnsfrShrDebuntureGrid.object.rowCount();
+	if(rows<31){
+		trnsfrShrDebuntureGrid.object.insertRow();
+		trnsfrShrDebuntureGrid.object.setCell(rows,0,rows+1) ;
+		
+	return true;
+	}
+	alert("Maximum no of rows allowed in this table are 30. You cannot add more row than this number. ");
+	return false;
+}
+function deleteTrnsfrShareDebuntureRow()
+{
+		
+	  trnsfrShrDebuntureGrid.object.deleteRow();	
+      var rowCnt = trnsfrShrDebuntureGrid.object.rowCount();
+      var rowLoopCnt = 0;
+ 
+      if(rowCnt > 0){             
+
+            for(rowLoopCnt = 0;rowLoopCnt < rowCnt;rowLoopCnt++){
+                trnsfrShrDebuntureGrid.object.setCell(rowLoopCnt,0,rowLoopCnt+1) ;
+				
+            }     
+      }
+}
+//For formA jsp
+function insertDirRow(){
+	
+	var rows = directorGrid.object.rowCount();
+	if(rows<55){
+		directorGrid.object.insertRow();
+	return true;
+	}
+	alert("Maximum no of rows allowed in this table are 55. You cannot add more rows than this number. ");
+	return false;
+}
+//For formA jsp
+function insertmembersDebentureRow(){
+	var rows = membersDebentureGrid.object.rowCount();
+	if(rows<31){
+		membersDebentureGrid.object.insertRow();
+	return true;
+	}
+	alert("Maximum no of rows allowed in this table are 30. You cannot add more row than this number. ");
+	return false;
+}
+//trim left spaces ' xyz  ' --> ' xyz'
+function LTrim( value ) {
+	
+	var re = /\s*((\S+\s*)*)/;
+	return value.replace(re, "$1");
+	
+}
+//trim right spaces ' xyz  ' --> 'xyz  '
+function RTrim( value ) {
+	
+	var re = /((\s*\S+)*)\s*/;
+	return value.replace(re, "$1");
+	
+}
+
+//trim spaces around ' xyz  ' --> 'xyz'
+function trim( value ) {
+	
+	return LTrim(RTrim(value));
+	
+}
+
+function replaceSequences(value)
+{
+	var finalStr="";
+	
+	for(var j=0; j<value.length; j++)
+	{
+	  var alphaa = value.charAt(j);
+	  var hh = alphaa.charCodeAt(0);
+			
+	  if(hh==34){
+	  		finalStr+="&#34";
+	  }
+	  else
+	  {
+	  		finalStr+=alphaa;
+	  }
+	}
+	//alert(finalStr);
+	return finalStr;
+}
+
+function submitNameSearch(){
+	var shouldSubmit= true;
+	var val= secpform.searchName.value;
+	var isSearchOptionSelected = false;
+	/*if(secpform.searchName.value == ""){
+		alert("Please enter the company name to search.");
+		shouldSubmit = false;
+	}*/
+
+	
+	for (var i=0; i < document.secpform.searchOption.length; i++)
+   	{
+   		if (document.secpform.searchOption[i].checked)
+      	{      		
+			isSearchOptionSelected= true;
+      	}
+   	}
+   	if(!isSearchOptionSelected){
+	   	alert("Please select one of the search criteria!");
+	   	shouldSubmit = false;
+	}
+
+	if( trim(val) == "" || trim(val).length < 2)
+	{	
+		alert("Please enter atleast 2 characters to perform search.");
+		secpform.searchName.focus = true;
+		return false;
+	}	
+
+	if(shouldSubmit){
+		secpform.submit();
+	}
+
+	return shouldSubmit;
+
+	
+	
+}
+
+/**
+ * DHTML date validation script. Courtesy of SmartWebby.com (http://www.smartwebby.com/dhtml/)
+ */
+// Declaring valid date character, minimum year and maximum year
+var dtCh= "-";
+var dtSl= "/";
+var minYear=1900;
+var maxYear=2100;
+
+function isInteger(s){
+    if(s.length == 0)
+    	return false;
+	var i;
+    for (i = 0; i < s.length; i++){   
+        // Check that current character is number.
+        var c = s.charAt(i);
+        if (((c < "0") || (c > "9"))) return false;
+    }
+    // All characters are numbers.
+    return true;
+}
+function stripCharsInBag(s, bag){
+	var i;
+    var returnString = "";
+    // Search through string's characters one by one.
+    // If character is not in bag, append to returnString.
+    for (i = 0; i < s.length; i++){   
+        var c = s.charAt(i);
+        if (bag.indexOf(c) == -1) returnString += c;
+    }
+    return returnString;
+}
+
+function daysInFebruary (year){
+	// February has 29 days in any year evenly divisible by four,
+    // EXCEPT for centurial years which are not also divisible by 400.
+    return (((year % 4 == 0) && ( (!(year % 100 == 0)) || (year % 400 == 0))) ? 29 : 28 );
+}
+function DaysArray(n) {
+	for (var i = 1; i <= n; i++) {
+		this[i] = 31
+		if (i==4 || i==6 || i==9 || i==11) {this[i] = 30}
+		if (i==2) {this[i] = 29}
+   } 
+   return this
+}
+function isDateWithSlash(dtStr){
+	
+
+	dtStr=dtStr.value;  	
+	var daysInMonth = DaysArray(12);
+	var pos1=dtStr.indexOf(dtSl);
+	
+	var pos2=dtStr.indexOf(dtSl,pos1+1);
+	var strDay=dtStr.substring(0,pos1);
+	var strMonth=dtStr.substring(pos1+1,pos2);
+	var strYear=dtStr.substring(pos2+1);
+	var date=new Date();
+	var dateArray = dtStr.split("/");
+	strYr=strYear;
+	if (strDay.charAt(0)=="0" && strDay.length>1) strDay=strDay.substring(1);
+	if (strMonth.charAt(0)=="0" && strMonth.length>1) strMonth=strMonth.substring(1);
+	for (var i = 1; i <= 3; i++) {
+		if (strYr.charAt(0)=="0" && strYr.length>1) strYr=strYr.substring(1);
+	}
+
+	month=parseInt(strMonth);
+	day=parseInt(strDay);
+	year=parseInt(strYr);
+	
+	
+	 if(!/^\d{1,2}\/\d{1,2}\/\d{4}$/.test(dtStr))
+    {  
+     alert("Invalid date value, the date format should be : DD/MM/YYYY") ;
+     return false;
+     }
+	
+	
+	 date.setFullYear(dateArray[2],dateArray[1]-1,dateArray[0]);
+	 var currentDate=new Date(); 
+
+	    if(date > currentDate) 
+	    {           
+	       alert("Invalid Date(Date is greater than current date)");
+	       return false; 
+	    }  
+	
+	if (pos1==-1 || pos2==-1){
+		alert("The date format should be : DD/MM/YYYY");
+		return false;
+	}
+	if (strMonth.length<1 || month<1 || month>12){
+		alert("Please enter a valid month");
+		return false;
+	}
+	if (strDay.length<1 || day<1 || day>31 || (month==2 && day>daysInFebruary(year)) || day > daysInMonth[month]){
+		alert("Please enter a valid day");
+		return false;
+	}
+	if (strYear.length != 4 || year==0 || year<minYear || year>maxYear){
+		alert("Please enter a valid 4 digit year between "+minYear+" and "+maxYear);
+		return false;
+	}
+	if (dtStr.indexOf(dtSl,pos2+1)!=-1 || isInteger(stripCharsInBag(dtStr, dtSl))==false){
+		alert("Please enter a valid date");
+		return false;
+	}
+return true
+}
+function isDate(dtStr){
+
+	var daysInMonth = DaysArray(12)
+	var pos1=dtStr.indexOf(dtCh)
+	var pos2=dtStr.indexOf(dtCh,pos1+1)
+	var strDay=dtStr.substring(0,pos1)
+	var strMonth=dtStr.substring(pos1+1,pos2)
+	var strYear=dtStr.substring(pos2+1)
+	strYr=strYear
+	if(strDay.length==1){ 
+	alert("The date format should be : DD-MM-YYYY e.d 01-01-2007")
+	return false;
+	}
+	if(strMonth.length==1){ 
+	alert("The date format should be : DD-MM-YYYY e.d 01-01-2007")
+	return false;
+	}
+	
+	if (strDay.charAt(0)=="0" && strDay.length>1) strDay=strDay.substring(1)
+	if (strMonth.charAt(0)=="0" && strMonth.length>1) strMonth=strMonth.substring(1)
+	for (var i = 1; i <= 3; i++) {
+		if (strYr.charAt(0)=="0" && strYr.length>1) strYr=strYr.substring(1)
+	}
+	month=parseInt(strMonth)
+	day=parseInt(strDay)
+	year=parseInt(strYr)
+	if (pos1==-1 || pos2==-1){
+		alert("The date format should be : DD-MM-YYYY")
+		return false
+	}
+	if (strMonth.length<1 || month<1 || month>12){
+		alert("Please enter a valid month")
+		return false
+	}
+	if (strDay.length<1 || day<1 || day>31 || (month==2 && day>daysInFebruary(year)) || day > daysInMonth[month]){
+		alert("Please enter a valid day")
+		return false
+	}
+	if (strYear.length != 4 || year==0 || year<minYear || year>maxYear){
+		alert("Please enter a valid 4 digit year between "+minYear+" and "+maxYear)
+		return false
+	}
+	if (dtStr.indexOf(dtCh,pos2+1)!=-1 || isInteger(stripCharsInBag(dtStr, dtCh))==false){
+		alert("Please enter a valid date")
+		return false
+	}
+return true
+}
+function isDateOK(dtStr, rowIndex){
+
+	var daysInMonth = DaysArray(12);
+	var pos1=dtStr.indexOf(dtSl);
+	var pos2=dtStr.indexOf(dtSl,pos1+1);
+	var strDay=dtStr.substring(0,pos1);
+	var strMonth=dtStr.substring(pos1+1,pos2);
+	var strYear=dtStr.substring(pos2+1);
+	strYr=strYear;
+	
+	//alert('dtStr = ' + dtStr);
+	//alert('rowIndex = ' + rowIndex);
+	
+	if (strDay.charAt(0)=="0" && strDay.length>1) strDay=strDay.substring(1);
+	if (strMonth.charAt(0)=="0" && strMonth.length>1) strMonth=strMonth.substring(1);
+	for (var i = 1; i <= 3; i++) {
+		if (strYr.charAt(0)=="0" && strYr.length>1) strYr=strYr.substring(1);
+	}
+
+	if (pos1==-1 || pos2==-1)
+	{
+		alert("The date format should be : DD/MM/YYYY. Check row = " + rowIndex);
+		return false;
+	}
+
+	//alert('strDay = ' + strDay);
+	//alert('strMonth = ' + strMonth);
+	//alert('strYear = ' + strYear);
+
+	if(strDay.length == 1)
+	{ 
+		if(!(strDay.charAt(0) == '0' || strDay.charAt(0) == '1' || strDay.charAt(0) == '2' || strDay.charAt(0) == '3' || strDay.charAt(0) == '4'
+		|| strDay.charAt(0) == '5' || strDay.charAt(0) == '6' || strDay.charAt(0) == '7' || strDay.charAt(0) == '8' || strDay.charAt(0) == '9'))
+		{	
+			alert("Invalid Day. Check row = " + rowIndex);
+			return false;
+		}		
+	}
+	if(strDay.length == 2)
+	{
+		//alert(strDay.charAt(0));
+		//alert(strDay.charAt(1));
+		if(!(strDay.charAt(0) == '0' || strDay.charAt(0) == '1' || strDay.charAt(0) == '2' || strDay.charAt(0) == '3' || strDay.charAt(0) == '4'
+		|| strDay.charAt(0) == '5' || strDay.charAt(0) == '6' || strDay.charAt(0) == '7' || strDay.charAt(0) == '8' || strDay.charAt(0) == '9'))
+		{	
+			alert("Invalid Day. Check row = " + rowIndex);
+			return false;
+		}
+		if(!(strDay.charAt(1) == '0' || strDay.charAt(1) == '1' || strDay.charAt(1) == '2' || strDay.charAt(1) == '3' || strDay.charAt(1) == '4'
+		|| strDay.charAt(1) == '5' || strDay.charAt(1) == '6' || strDay.charAt(1) == '7' || strDay.charAt(1) == '8' || strDay.charAt(1) == '9'))
+		{	
+			alert("Invalid Day. Check row = " + rowIndex);
+			return false;
+		}
+	}
+	if(strDay.length<1 || strDay.length>2)
+	{
+		alert("Invalid Day. Check row = " + rowIndex);
+		return false;
+	}
+	
+	if(strMonth.length == 1)
+	{ 
+		if(!(strMonth.charAt(0) == '0' || strMonth.charAt(0) == '1' || strMonth.charAt(0) == '2' || strMonth.charAt(0) == '3' || strMonth.charAt(0) == '4'
+			|| strMonth.charAt(0) == '5' || strMonth.charAt(0) == '6' || strMonth.charAt(0) == '7' || strMonth.charAt(0) == '8' || strMonth.charAt(0) == '9'))
+		{	
+			alert("Invalid Month. Check row = " + rowIndex);
+			return false;
+		}	
+	}
+	if(strMonth.length == 2)
+	{
+		if(!(strMonth.charAt(0) == '0' || strMonth.charAt(0) == '1' || strMonth.charAt(0) == '2' || strMonth.charAt(0) == '3' || strMonth.charAt(0) == '4'
+		|| strMonth.charAt(0) == '5' || strMonth.charAt(0) == '6' || strMonth.charAt(0) == '7' || strMonth.charAt(0) == '8' || strMonth.charAt(0) == '9'))
+		{
+			alert("Invalid Month. Check row = " + rowIndex);
+			return false;
+		}
+		if(!(strMonth.charAt(1) == '0' || strMonth.charAt(1) == '1' || strMonth.charAt(1) == '2' || strMonth.charAt(1) == '3' || strMonth.charAt(1) == '4'
+		|| strMonth.charAt(1) == '5' || strMonth.charAt(1) == '6' || strMonth.charAt(1) == '7' || strMonth.charAt(1) == '8' || strMonth.charAt(1) == '9'))
+		{
+			alert("Invalid Month. Check row = " + rowIndex);
+			return false;
+		}	
+	}
+	if(strMonth.length<1 || strMonth.length>2)	
+	{
+		alert("Invalid Month. Check row = " + rowIndex);
+		return false;
+	}
+
+	month=parseInt(strMonth);
+	day=parseInt(strDay);
+	year=parseInt(strYr);
+
+	if (month<1 || month>12){		
+		alert("Invalid Month. Check row = " + rowIndex);
+		return false;
+	}
+	if (day<1 || day>31 || (month==2 && day>daysInFebruary(year)) || day > daysInMonth[month]){
+		alert("Invalid Day. Check row = " + rowIndex);
+		return false;
+	}
+	if (strYear.length != 4 || year==0 || year<minYear || year>maxYear){
+		alert("Please enter a valid 4 digit year between "+minYear+" and "+maxYear+". Check row = " + rowIndex);
+		return false;
+	}
+	//if (dtStr.indexOf(dtSl,pos2+1)!=-1 || isInteger(stripCharsInBag(dtStr, dtSl))==false){
+		//alert("Please enter a valid date"+". Check row = " + rowIndex);
+		//return false;
+	//}
+	return true;
+}
+function isValidNIC(NIC) {
+	var matchArr = NIC.match(/^(\d{5})-\d{7}-\d{1}$/);
+	var numDashes = NIC.split('-').length - 1;
+	if (matchArr == null || numDashes == 1) {
+		return false;
+	}
+	return true;
+}	
+function isValidNICPassport(NIC) {
+	return true;
+}	
+//checks that the field is not empty and the input value is either a integer or a float
+function checkAmount(fieldValue) {
+	decallowed = 2;  // how many decimals are allowed?
+	if (isNaN(fieldValue) || trim(fieldValue) == "") {
+		return false;
+	}
+	else 
+	{
+		if (fieldValue.indexOf('.') == -1) fieldValue += ".";
+			dectext = fieldValue.substring(fieldValue.indexOf('.')+1, fieldValue.length);
+		if (dectext.length > decallowed)
+		{
+			return false;
+	    }
+   }
+   return true;
+}
+//checks that the input value is either a integer or a float
+function chkDollarAmount(fieldValue) {
+	decallowed = 2;  // how many decimals are allowed?
+	if (isNaN(fieldValue)) {
+		return false;
+	}
+	else 
+	{
+		if (fieldValue.indexOf('.') == -1) fieldValue += ".";
+			dectext = fieldValue.substring(fieldValue.indexOf('.')+1, fieldValue.length);
+		if (dectext.length > decallowed)
+		{
+			return false;
+	    }
+   }
+   return true;
+}
+function isStrMatch(str1, str2){
+  return str1.toUpperCase() == str2.toUpperCase();
+}
+function trim(str) {
+  return str.replace(/^\s+/g, '').replace(/\s+$/g, '');
+}
+function FP_preloadImgs() {//v1.0
+ var d=document,a=arguments; if(!d.FP_imgs) d.FP_imgs=new Array();
+ for(var i=0; i<a.length; i++) { d.FP_imgs[i]=new Image; d.FP_imgs[i].src=a[i]; }
+}
+
+function FP_swapImgRestore() {//v1.0
+ var doc=document,i; if(doc.$imgSwaps) { for(i=0;i<doc.$imgSwaps.length;i++) {
+  var elm=doc.$imgSwaps[i]; if(elm) { elm.src=elm.$src; elm.$src=null; } } 
+  doc.$imgSwaps=null; }
+}
+
+function FP_swapImg() {//v1.0
+ var doc=document,args=arguments,elm,n; doc.$imgSwaps=new Array(); for(n=2; n<args.length;
+ n+=2) { elm=FP_getObjectByID(args[n]); if(elm) { doc.$imgSwaps[doc.$imgSwaps.length]=elm;
+ elm.$src=elm.src; elm.src=args[n+1]; } }
+}
+
+function FP_getObjectByID(id,o) {//v1.0
+ var c,el,els,f,m,n; if(!o)o=document; if(o.getElementById) el=o.getElementById(id);
+ else if(o.layers) c=o.layers; else if(o.all) el=o.all[id]; if(el) return el;
+ if(o.id==id || o.name==id) return o; if(o.childNodes) c=o.childNodes; if(c)
+ for(n=0; n<c.length; n++) { el=FP_getObjectByID(id,c[n]); if(el) return el; }
+ f=o.forms; if(f) for(n=0; n<f.length; n++) { els=f[n].elements;
+ for(m=0; m<els.length; m++){ el=FP_getObjectByID(id,els[n]); if(el) return el; } }
+ return null;
+}
+
+function validateUploadFile(filename, reqExtension, extDesc){
+		if((filename == null || filename == '')) {
+			alert('Please select a valid file by clicking browse button');
+			return false;
+		} else {
+			var indexOfDot = filename.indexOf('.')
+			var extension = null
+			if(indexOfDot != -1) {
+				extension = filename.substring(indexOfDot+1, filename.length)
+			}
+			if((extension == null) || (extension == '') || (extension.toLowerCase() != reqExtension.toLowerCase())) {
+				alert('Please select a valid '+extDesc+' file by clicking browse button');
+				return false;
+			}
+		}
+		return true;
+}
+
+function wopen(url, name, w, h)
+{
+w += 32;
+h += 96;
+wleft = (screen.width - w) / 2;
+wtop = (screen.height - h) / 2;
+ var win = window.open(url,
+  name,
+  'width=' + w + ', height=' + h + ', ' +
+   'left=' + wleft + ', top=' + wtop + ', ' +
+  'location=no, menubar=no, ' +
+  'status=no, toolbar=no, scrollbars=no, resizable=no');
+ win.resizeTo(w, h);
+ win.moveTo(wleft, wtop);
+ win.focus();
+}
+
+function focusNextOnInput(thisCompNm, nextCompNm, curLen, e){
+	var thisComp = document.forms[0].elements[thisCompNm];
+	var nextComp = document.forms[0].elements[nextCompNm];
+	var keynum;
+	var keychar;
+	var numcheck;
+	if((thisComp!= null) && (thisComp.value.length == curLen))
+	{
+		keynum = e.keyCode;
+		keychar = String.fromCharCode(keynum);
+		numcheck = new RegExp("[a-zA-Z0-9]");
+		if(numcheck.test(keychar)){
+			nextComp.focus();
+		}
+	}
+}
+
+function isValidDate(iDate){
+    var dateArray = iDate.split("/");
+    var date=new Date();
+    date.setFullYear(dateArray[2],dateArray[1]-1,dateArray[0]);
+    var currentDate=new Date(); 
+    if(date > currentDate){           
+            return false;
+    }
+	return true;
+}
+//checks that value is integer or float(upto 2 decimel places)
+function isDollar(fieldValue) {
+	decallowed = 2;  // how many decimals are allowed?
+	
+	if (isNaN(fieldValue) ) {
+		return false;
+	}
+	else if( trim(fieldValue) == "" && fieldValue.length>0){	
+		return false;		
+	}
+	else {
+		if (fieldValue.indexOf('.') == -1) 
+			fieldValue += ".";		
+		dectext = fieldValue.substring(fieldValue.indexOf('.')+1, fieldValue.length);
+		if (dectext.length > decallowed){
+		
+			return false;
+	    	}
+   	}	
+   return true;
+}
+//fucntion used to check the special characters if disallowd special characters are will retrun false and true otherwise
+function isValidText(alphane)
+{
+	var numaric = alphane;
+	for(var j=0; j<numaric.length; j++)
+		{
+		  var alphaa = numaric.charAt(j);
+		  var hh = alphaa.charCodeAt(0);
+			
+		  if((hh > 47 && hh<59) || (hh > 64 && hh<91) || (hh > 96 && hh<123)||(hh==45/* - */)||(hh==32/* Space */) ||(hh==13/* Enter [Carriage] */)  ||(hh==10/* Enter [Line Feed] */) 
+									|| (hh==38/* & */)||(hh==40/* ( */)||(hh==41 /* ) */)||(hh==95 /*_*/ )||(hh==44/*comma*/ ) || (hh==35 /*#*/) || (hh==46 /*dot*/)){
+		  }
+		else	{
+			 return false;
+		  }
+		}
+ return true;
+}
+//basically this fucntion is made for grid used at form 10 and form 16 FOR
+function isValidTextForGrid(alphane)
+{
+	//alert(alphane);
+	//alphane.replace(/&amp;/g,"");
+	var numaric = alphane;
+	for(var j=0; j<numaric.length; j++)
+		{
+		  var alphaa = numaric.charAt(j);
+		  
+		  var hh = alphaa.charCodeAt(0);
+			
+		  if(
+				  (hh > 47 && hh<59) || (hh > 64 && hh<91) || (hh > 96 && hh<123)||(hh==45/* - */)||(hh==32/* Space */) 
+									||(hh==40/* ( */)||(hh==41 /* ) */)||(hh==44/*comma*/ ) || (hh==35 /*#*/) /*|| (hh==38 &)*/ 
+									|| (hh==46 /*.*/) || (hh==47 /* / */) 
+		  )
+		  {
+			  //return true;
+			  //alert(hh);
+		  }
+		else	
+		{
+			 return false;
+		  }
+		}
+ return true;
+ }
+// This function takes two dates in string and return true if second date is greater or equal and false otherwise
+ function compareDates(firstDt, secondDt){
+
+	var dateArray = firstDt.split("/");
+	var firstDate=new Date();
+	firstDate.setFullYear(dateArray[2],dateArray[1]-1,dateArray[0]);
+
+	dateArray = secondDt.split("/");
+	var secondDate =new Date();
+	secondDate.setFullYear(dateArray[2],dateArray[1]-1,dateArray[0]);	
+
+	if(secondDate >= firstDate){
+		return true;
+	}
+		return false;
+ 
+ }
+ //Compare Dates
+ function isequalDates(firstDt, secondDt){
+
+	var dateArray = firstDt.split("/");
+	var firstDate=new Date();
+	firstDate.setFullYear(dateArray[2],dateArray[1]-1,dateArray[0]);
+
+	dateArray = secondDt.split("/");
+	var secondDate =new Date();
+	secondDate.setFullYear(dateArray[2],dateArray[1]-1,dateArray[0]);	
+	
+	if(secondDate > firstDate){
+		return false;
+	}
+	if(secondDate < firstDate)
+	return false;
+		return true;
+ 
+ }
+ 
+ function isValidTextForCNR(alphane)
+{
+	var numaric = alphane;
+	for(var j=0; j<numaric.length; j++)
+		{
+		  var alphaa = numaric.charAt(j);
+		  var hh = alphaa.charCodeAt(0);
+			
+		  if((hh >= 47 && hh<59) || (hh > 64 && hh<91) || (hh > 96 && hh<123)||(hh==45/* - */)||(hh==32/* Space */) 
+									|| (hh==38/* & */)||(hh==40/* ( */)||(hh==41 /* ) */)||(hh==95 /*_*/ )||(hh==44/*comma*/ ) || (hh==35 /*#*/)){
+		  }
+		else	{
+			 return false;
+		  }
+		}
+ return true;
+}
+//mostly uses for name, city , etc
+function isAlphabeticSpacesorDash(inputValue)
+{
+	// alert("I'm into the func: "+inputValue);
+	var Val=inputValue;
+
+	for(var j=0; j<Val.length; j++)
+	{
+	  	var ch = Val.charAt(j);
+
+		if( !(ch>=' ' || ch<='-' || (ch>='A' && ch<='Z') || (ch>='a' && ch<='z')))
+		{
+			return false;
+		}
+	}
+
+	return true;
+}
+//will be used for phone no, fax etc
+function isNumericSpacesorDash(inputValue)
+{
+	var Val=inputValue;
+
+	for(var j=0; j<Val.length; j++)
+	{
+	  	var ch = Val.charAt(j);
+
+		if( !((ch>='0' && ch<='9') || (ch == '-' ) || (ch = ' ')))
+		{
+			return false;
+		}
+	}
+
+	return true;
+}
+	
+
+function isCityValid(inputValue)
+{
+	var Val=inputValue;
+
+	for(var j=0; j<Val.length; j++)
+	{
+	  	var ch = Val.charAt(j);
+
+		if( !((ch>='A' && ch<='Z') || (ch>='a' && ch<='z') || (ch == ' ')))
+		{
+			return false;
+		}
+	}
+
+	return true;
+}
+//will be used for names, father names etc
+function isAlphabet(inputValue)
+{
+	var Val=inputValue;
+
+	for(var j=0; j<Val.length; j++)
+	{
+	  	var ch = Val.charAt(j);
+
+		if(!((ch>='A' && ch<='Z') || (ch>='a' && ch<='z') || (ch == ' ') ))
+		{
+			return false;
+		}
+	}
+
+	return true;
+}
+function isNatureOfBusinessValid(inputValue)
+{
+	var Val=inputValue;
+
+	for(var j=0; j<Val.length; j++)
+	{
+	  	var ch = Val.charAt(j);
+
+		if( !((ch>='A' && ch<='Z') || (ch>='a' && ch<='z') || (ch == ' ')||(ch == '.')))
+		{
+			return false;
+		}
+	}
+
+	return true;
+}
+function isPostalCodeValid(inputValue)
+{
+	var Val=inputValue;
+
+	for(var j=0; j<Val.length; j++)
+	{
+	  	var ch = Val.charAt(j);
+
+		if( !((ch>='0' && ch<='9') || (ch>='A' && ch<='Z') || (ch>='a' && ch<='z' ) || (ch == '-' )))
+		{
+			return false;
+		}
+	}
+
+	return true;
+}
+function isTelFaxValid(inputValue)
+{
+	var Val=inputValue;
+
+	for(var j=0; j<Val.length; j++)
+	{
+	  	var ch = Val.charAt(j);
+
+		if( !((ch>='0' && ch<='9') || (ch == '-' )))
+		{
+			return false;
+		}
+	}
+
+	return true;
+}
+function isValidName(inputValue)
+{
+	var Val=inputValue;
+
+	for(var j=0; j<Val.length; j++)
+	{
+	  	var ch = Val.charAt(j);
+
+		if( !((ch>='A' && ch<='Z') || (ch>='a' && ch<='z') || (ch == ' ') || (ch=='.') || (ch=='-')))
+		{
+			return false;
+		}
+	}
+
+	return true;
+}
+function isValidOccupation(inputValue)
+{
+	var Val=inputValue;
+
+	for(var j=0; j<Val.length; j++)
+	{
+	  	var ch = Val.charAt(j);
+
+		if( !((ch>='A' && ch<='Z') || (ch>='a' && ch<='z') || (ch == ' ')||(ch=='.')||(ch=='(')||(ch==')')||(ch=='-')))
+		{
+			return false;
+		}
+	}
+
+	return true;
+}
+function isValidModeOfContract(inputValue)
+{
+	var Val=inputValue;
+
+	for(var j=0; j<Val.length; j++)
+	{
+	  	var ch = Val.charAt(j);
+
+		if( !((ch>='0' && ch<='9') || (ch>='A' && ch<='Z') || (ch>='a' && ch<='z') || (ch == ' ')||(ch=='.')||(ch=='(')||(ch==')')||(ch=='-')))
+		{
+			return false;
+		}
+	}
+
+	return true;
+}
+function isInValid(inputValue)
+{
+	var Val=inputValue;
+
+	for(var j=0; j<Val.length; j++)
+	{
+	  	var ch = Val.charAt(j);
+
+		if((ch == ' ')||(ch=='.')||(ch=='!')||(ch=='@')||(ch=='#')||(ch=='$') || (ch == '%')||(ch=='^')||(ch=='&')||(ch=='*')||(ch=='_'))
+		{
+			return true;
+		}
+	}
+
+	return false;
+}
+
+//checks that value is integer or float(upto 9 decimel places)
+function isDollarUpto9Decimal(fieldValue) {
+	decallowed = 9;  // how many decimals are allowed?
+	
+	if (isNaN(fieldValue) ) {
+		return false;
+	}
+	else if( trim(fieldValue) == "" && fieldValue.length>0){	
+		return false;		
+	}
+	else {
+		if (fieldValue.indexOf('.') == -1) 
+			fieldValue += ".";		
+		dectext = fieldValue.substring(fieldValue.indexOf('.')+1, fieldValue.length);
+		if (dectext.length > decallowed){
+		
+			return false;
+	    	}
+   	}	
+   return true;
+}
+
+function isDecimal(value) {
+	
+	var re =/^(-{0,1})\d*(\.\d{1,15})?$/;
+
+	if(re.test(value) != true) {
+		return false;
+	}
+	return true;
+
+}
+
+
+function isValidDateWithFormat( strValue ) {
+/************************************************
+DESCRIPTION: Validates that a string contains only
+    valid dates with 2 digit month, 2 digit day,
+    4 digit year. Date separator can be ., -, or /.
+    Uses combination of regular expressions and
+    string parsing to validate date.
+    Ex. mm/dd/yyyy or mm-dd-yyyy or mm.dd.yyyy
+
+PARAMETERS:
+   strValue - String to be tested for validity
+
+RETURNS:
+   True if valid, otherwise false.
+
+REMARKS:
+   Avoids some of the limitations of the Date.parse()
+   method such as the date separator character.
+*************************************************/
+  var objRegExp = /^\d{2}(\/)\d{2}(\/)\d{4}$/
+ 
+  //check to see if in correct format
+  if(!objRegExp.test(strValue))
+    return false; //doesn't match pattern, bad date
+  else{
+    var strSeparator = strValue.substring(2,3) 
+    var arrayDate = strValue.split(strSeparator); 
+    //create a lookup for months not equal to Feb.
+    var arrayLookup = { '01' : 31,'03' : 31, 
+                        '04' : 30,'05' : 31,
+                        '06' : 30,'07' : 31,
+                        '08' : 31,'09' : 30,
+                        '10' : 31,'11' : 30,'12' : 31}
+    var intDay = parseInt(arrayDate[0],10); 
+
+    //check if month value and day value agree
+    if(arrayLookup[arrayDate[1]] != null) {
+      if(intDay <= arrayLookup[arrayDate[1]] && intDay != 0)
+        return true; //found in lookup table, good date
+    }
+    
+    //check for February (bugfix 20050322)
+    //bugfix  for parseInt kevin
+    //bugfix  biss year  O.Jp Voutat
+    var intMonth = parseInt(arrayDate[1],10);
+    if (intMonth == 2) { 
+       var intYear = parseInt(arrayDate[2]);
+       if (intDay > 0 && intDay < 29) {
+           return true;
+       }
+       else if (intDay == 29) {
+         if ((intYear % 4 == 0) && (intYear % 100 != 0) || 
+             (intYear % 400 == 0)) {
+              // year div by 4 and ((not div by 100) or div by 400) ->ok
+             return true;
+         }   
+       }
+    }
+  }  
+  return false; //any other values, bad date
+}
+
+
+
+
+function validateGridCell(grid, columnIndex, criteria, cellName) {
+	var rowIndex=0;
+	var lastRow =grid.object.rowCount();
+	
+	var filters = criteria.split(",");
+	var required = filters[0].split("=");
+	var input = filters[1].split("=");
+	var length = filters[2].split("=");
+	
+	while(rowIndex<lastRow) {
+		//required
+		
+		if(trim(required[1])=="true") {
+			if (trim(grid.object.getCellText(rowIndex, columnIndex)) == "") {
+				//alert("Input required for "+ cellName +" at row: "+ ++rowIndex);
+				ShowErrorOnGrid(grid, rowIndex, columnIndex, "Error", "Input Required");
+				return false;
+			}
+		}
+		
+		if(trim(grid.object.getCellText(rowIndex, columnIndex))!= "") {
+			//type
+			//if(trim(input[1])=="allowAll") {
+			//	return true;
+			//}
+			if(trim(input[1])=="decimal") {
+				if (!isDecimal(grid.object.getCellText(rowIndex, columnIndex).replace(/,/g,""))) {
+					//alert("Only numeric or decimal values are allowed for "+ cellName +" at row: "+ ++rowIndex);
+					ShowErrorOnGrid(grid, rowIndex, columnIndex, "Error", "Only numeric or decimal values are allowed");
+					return false;
+				}
+			}
+			else if(trim(input[1])=="gridText") {
+				if (!isValidTextForGrid(grid.object.getCellText(rowIndex, columnIndex))) {
+					//alert("Only alpha-Numeric values are allowed for "+ cellName +" at row: "+ ++rowIndex);
+					ShowErrorOnGrid(grid, rowIndex, columnIndex, "Error", "Only alpha-Numeric values are allowed");
+					return false;
+				}
+			}
+			else if(trim(input[1])=="number") {
+				if (!isNumberValid(grid.object.getCellText(rowIndex, columnIndex).replace(/,/g,""))) {
+					//alert("Only numeric values are allowed for "+ cellName +" at row: "+ ++rowIndex);
+					ShowErrorOnGrid(grid, rowIndex, columnIndex, "Error", "Only integer values are allowed (No Decimal)");
+					return false;
+				}
+			}
+			else if(trim(input[1])=="date") {
+				if (!isValidDateWithFormat(grid.object.getCellText(rowIndex, columnIndex))) {
+					//alert("Date is not valid for "+ cellName +" at row: "+ ++rowIndex +" \nDate Format is DD/MM/YYYY");
+					ShowErrorOnGrid(grid, rowIndex, columnIndex, "Error", "Date is not valid. \nDate Format is DD/MM/YYYY");
+					return false;
+				}
+			}
+			
+			//if decimal or number value, remove comma(,) and then check length
+			if(trim(input[1])=="decimal" || trim(input[1])=="number") {
+				//length
+				if (grid.object.getCellText(rowIndex, columnIndex).replace(/,/g,"").length > length[1]) {
+					//alert("Length cannot be greater than "+ length[1] +" for "+ cellName +" at row: "+ ++rowIndex);
+					ShowErrorOnGrid(grid, rowIndex, columnIndex, "Error", "Length cannot be greater than "+ length[1]);
+					return false;
+				}
+			}
+			else {
+				//length
+				if (grid.object.getCellText(rowIndex, columnIndex).length > length[1]) {
+					//alert("Length cannot be greater than "+ length[1] +" for "+ cellName +" at row: "+ ++rowIndex);
+					ShowErrorOnGrid(grid, rowIndex, columnIndex, "Error", "Length cannot be greater than "+ length[1]);
+					return false;
+				}
+			}
+		}
+		rowIndex++;
+	}
+	return true;
+}
+
+function validateGridCell1(grid, columnIndex, rowIndex, criteria, cellName) {
+	//var rowIndex=0;
+	//var lastRow =grid.object.rowCount();
+	
+	var filters = criteria.split(",");
+	var required = filters[0].split("=");
+	var input = filters[1].split("=");
+	var length = filters[2].split("=");
+	
+	//while(rowIndex<lastRow) {
+		//required
+		
+		if(trim(required[1])=="true" ) {
+			if (trim(grid.object.getCellText(rowIndex, columnIndex)) == "") {
+				//alert("Input required for "+ cellName +" at row: "+ ++rowIndex);
+				ShowErrorOnGrid(grid, rowIndex, columnIndex, "Error", "Input Required");
+				return false;
+			}
+		}
+		
+		if(trim(grid.object.getCellText(rowIndex, columnIndex))!= "") {
+			//type
+			//if(trim(input[1])=="allowAll") {
+			//	return true;
+			//}
+			if(trim(input[1])=="decimal") {
+				if (!isDecimal(grid.object.getCellText(rowIndex, columnIndex).replace(/,/g,""))) {
+					//alert("Only numeric or decimal values are allowed for "+ cellName +" at row: "+ ++rowIndex);
+					ShowErrorOnGrid(grid, rowIndex, columnIndex, "Error", "Only numeric or decimal values are allowed");
+					return false;
+				}
+			}
+			else if(trim(input[1])=="gridText") {
+				if (!isValidTextForGrid(grid.object.getCellText(rowIndex, columnIndex))) {
+					//alert("Only alpha-Numeric values are allowed for "+ cellName +" at row: "+ ++rowIndex);
+					ShowErrorOnGrid(grid, rowIndex, columnIndex, "Error", "Only alpha-Numeric values are allowed");
+					return false;
+				}
+			}
+			else if(trim(input[1])=="number") {
+				if (!isNumberValid(grid.object.getCellText(rowIndex, columnIndex).replace(/,/g,""))) {
+					//alert("Only numeric values are allowed for "+ cellName +" at row: "+ ++rowIndex);
+					ShowErrorOnGrid(grid, rowIndex, columnIndex, "Error", "Only integer values are allowed (No Decimal)");
+					return false;
+				}
+			}
+			else if(trim(input[1])=="date") {
+				if (!isValidDateWithFormat(grid.object.getCellText(rowIndex, columnIndex))) {
+					//alert("Date is not valid for "+ cellName +" at row: "+ ++rowIndex +" \nDate Format is DD/MM/YYYY");
+					ShowErrorOnGrid(grid, rowIndex, columnIndex, "Error", "Date is not valid. \nDate Format is DD/MM/YYYY");
+					return false;
+				}
+			}
+			
+			else if(trim(input[1])=="NICNEW") {
+				if (!isValidNIC(grid.object.getCellText(rowIndex, columnIndex))) {
+					//alert("Date is not valid for "+ cellName +" at row: "+ ++rowIndex +" \nDate Format is DD/MM/YYYY");
+					ShowErrorOnGrid(grid, rowIndex, columnIndex, "Error", "Invalid NIC No. of Investor. CNIC Format should be(#####-#######-#)");
+					return false;
+				}
+			}
+			
+				else if(trim(input[1])=="NICOLD") {
+				if (!isNumberValid(grid.object.getCellText(rowIndex, columnIndex).replace(/,/g,""))) {
+					//alert("Only numeric values are allowed for "+ cellName +" at row: "+ ++rowIndex);
+					ShowErrorOnGrid(grid, rowIndex, columnIndex, "Error", "Invalid NIC No. of Investor. CNIC Format should be(###########)");
+					return false;
+				}
+				if (grid.object.getCellText(rowIndex, columnIndex).length > 11 ||grid.object.getCellText(rowIndex, columnIndex).length < 11) {
+			
+				ShowErrorOnGrid(grid, rowIndex, columnIndex, "Error", "Invalid NIC No. of Investor. CNIC Format should be(###########)");
+					return false;
+				}
+			}
+			
+			//if decimal or number value, remove comma(,) and then check length
+			if(trim(input[1])=="decimal" || trim(input[1])=="number") {
+				//length
+				if (grid.object.getCellText(rowIndex, columnIndex).replace(/,/g,"").length > length[1]) {
+					//alert("Length cannot be greater than "+ length[1] +" for "+ cellName +" at row: "+ ++rowIndex);
+					ShowErrorOnGrid(grid, rowIndex, columnIndex, "Error", "Length cannot be greater than "+ length[1]);
+					return false;
+				}
+			}
+			else {
+				//length
+				if (grid.object.getCellText(rowIndex, columnIndex).length > length[1]) {
+					//alert("Length cannot be greater than "+ length[1] +" for "+ cellName +" at row: "+ ++rowIndex);
+					ShowErrorOnGrid(grid, rowIndex, columnIndex, "Error", "Length cannot be greater than "+ length[1]);
+					return false;
+				}
+			}
+		}
+		//rowIndex++;
+	//}
+	return true;
+}
+
+function isValidNIC(NIC) {
+
+
+	var matchArr = NIC.match(/^(\d{5})-\d{7}-\d{1}$/);
+	var numDashes = NIC.split('-').length - 1;
+	if (matchArr == null || numDashes == 1) {
+		return false;
+	}
+	return true;
+}
+
+
+
+function validateGridCellMultiple(grid, columnIndex, criteria, cellName,gridName) {
+	var rowIndex=0;
+	var lastRow =grid.object.rowCount();
+	
+	var filters = criteria.split(",");
+	var required = filters[0].split("=");
+	var input = filters[1].split("=");
+	var length = filters[2].split("=");
+	
+	while(rowIndex<lastRow) {
+		//required
+		
+		if(trim(required[1])=="true") {
+			if (trim(grid.object.getCellText(rowIndex, columnIndex)) == "") {
+				//alert("Input required for "+ cellName +" at row: "+ ++rowIndex + " for " + gridName);
+				ShowErrorOnGrid(grid, rowIndex, columnIndex, "Error", "Input Required");
+				return false;
+			}
+		}
+		
+		if(trim(grid.object.getCellText(rowIndex, columnIndex))!="") {
+			//type
+			//if(trim(input[1])=="allowAll") {
+			//	return true;
+			//}
+			if(trim(input[1])=="decimal") {
+				if (!isDecimal(grid.object.getCellText(rowIndex, columnIndex).replace(/,/g,""))) {
+					//alert("Only numeric or decimal values are allowed for "+ cellName +" at row: "+ ++rowIndex + " for " + gridName);
+					ShowErrorOnGrid(grid, rowIndex, columnIndex, "Error", "Only numeric or decimal values are allowed");
+					return false;
+				}
+			}
+			else if(trim(input[1])=="gridText") {
+				if (!isValidTextForGrid(grid.object.getCellText(rowIndex, columnIndex))) {
+					//alert("Only alpha-Numeric values are allowed for "+ cellName +" at row: "+ ++rowIndex + " for " + gridName);
+					ShowErrorOnGrid(grid, rowIndex, columnIndex, "Error", "Only alpha-Numeric values are allowed");
+					return false;
+				}
+			}
+			else if(trim(input[1])=="number") {
+				if (!isNumberValid(grid.object.getCellText(rowIndex, columnIndex).replace(/,/g,""))) {
+					//alert("Only numeric values are allowed for "+ cellName +" at row: "+ ++rowIndex + " for " + gridName);
+					ShowErrorOnGrid(grid, rowIndex, columnIndex, "Error", "Only integer values are allowed (No Decimal)");
+					return false;
+				}
+			}
+			else if(trim(input[1])=="date") {
+				if (!isValidDateWithFormat(grid.object.getCellText(rowIndex, columnIndex))) {
+					//alert("Date is not valid for "+ cellName +" at row: "+ ++rowIndex +" \nDate Format is DD/MM/YYYY" + " for " + gridName);
+					ShowErrorOnGrid(grid, rowIndex, columnIndex, "Error", "Date is not valid \nDate Format is DD/MM/YYYY");
+					return false;
+				}
+			}
+			
+			//if decimal or number value, remove comma(,) and then check length
+			if(trim(input[1])=="decimal" || trim(input[1])=="number") {
+				//length
+				if (grid.object.getCellText(rowIndex, columnIndex).replace(/,/g,"").length > length[1]) {
+					//alert("Length cannot be greater than "+ length[1] +" for "+ cellName +" at row: "+ ++rowIndex);
+					ShowErrorOnGrid(grid, rowIndex, columnIndex, "Error", "Length cannot be greater than "+ length[1]);
+					return false;
+				}
+			}
+			else {
+				//length
+				if (grid.object.getCellText(rowIndex, columnIndex).length > length[1]) {
+					//alert("Length cannot be greater than "+ length[1] +" for "+ cellName +" at row: "+ ++rowIndex);
+					ShowErrorOnGrid(grid, rowIndex, columnIndex, "Error", "Length cannot be greater than "+ length[1]);
+					return false;
+				}
+			}
+		}
+		rowIndex++;
+	}
+	return true;
+}
+
+function removeTrailingZeros(x) {
+	var decPos=x.indexOf(".")
+	if (decPos>-1)
+	{
+		first=x.substring(0,decPos);
+		second=x.substring(decPos,x.length);
+		while (second.charAt(second.length-1)=="0")
+			second=second.substring(0,second.length-1);
+		if (second.length>1)
+			return first+second;
+		else
+			return first;
+	}
+	return x;
+}//end of remTrailingZeros(x)
+
+
+function GotoCell(GridObj, gRow, gColumn)
+{
+
+   var RowCount = GridObj.rowCount();
+   var ColCount = GridObj.columnCount();
+
+   if ((gColumn > ColCount) || (gRow > RowCount))
+   {
+      
+   } else
+   {
+      GridObj.deactivateCell();   
+      GridObj.activeCell = GridObj.getCellObject(gRow,gColumn);
+
+      GridObj.activateCell();   
+      GridObj.scroll();
+      GridObj.position();
+
+   }
+
+   return false;
+}
+
+
+ function ShowErrorOnGrid(grid, row, col, title, body) {  
+	
+	grid.object.setFocus();
+	
+	GotoCell(grid.object, row, col);
+
+    nitobi.callout.destroyLast();  
+    // now we create a new one  
+    var myCallout = new nitobi.callout.Callout("vista");  
+    // we attach it to the element with ID myName  
+    myCallout.attachToElement(grid.object.getCellObject(row,col).id);  
+    myCallout.setTitle(title);  
+    myCallout.setBody(body);  
+    // now we show it.  
+    myCallout.show();  
+    //valueHistory[formField.id] = formField.value;  
+    
+}
+
+
+
+function validateGridCellDOM(grid, data, rowIndex, columnIndex, columnAlpha, criteria, cellName) {
+	//var rowIndex=0;
+	//var lastRow =grid.object.rowCount();
+	
+	var filters = criteria.split(",");
+	var required = filters[0].split("=");
+	var input = filters[1].split("=");
+	var length = filters[2].split("=");
+	
+	//while(rowIndex<lastRow) {
+		//required
+		
+		if(trim(required[1])=="true" ) {
+			if (trim(data.childNodes[0].childNodes[rowIndex].getAttribute(columnAlpha)) == "") {
+				//alert("Input required for "+ cellName +" at row: "+ ++rowIndex);
+				ShowErrorOnGrid(grid, rowIndex, columnIndex, "Error", "Input Required");
+				return false;
+			}
+		}
+		
+		if(trim(data.childNodes[0].childNodes[rowIndex].getAttribute(columnAlpha))!= "") {
+			//type
+			//if(trim(input[1])=="allowAll") {
+			//	return true;
+			//}
+			if(trim(input[1])=="decimal") {
+				if (!isDecimal(data.childNodes[0].childNodes[rowIndex].getAttribute(columnAlpha).replace(/,/g,""))) {
+					//alert("Only numeric or decimal values are allowed for "+ cellName +" at row: "+ ++rowIndex);
+					ShowErrorOnGrid(grid, rowIndex, columnIndex, "Error", "Only numeric or decimal values are allowed");
+					return false;
+				}
+			}
+			else if(trim(input[1])=="gridText") {
+				if (!isValidTextForGrid(data.childNodes[0].childNodes[rowIndex].getAttribute(columnAlpha))) {
+					//alert("Only alpha-Numeric values are allowed for "+ cellName +" at row: "+ ++rowIndex);
+					ShowErrorOnGrid(grid, rowIndex, columnIndex, "Error", "Only alpha-Numeric values are allowed");
+					return false;
+				}
+			}
+			else if(trim(input[1])=="number") {
+				if (!isNumberValid(data.childNodes[0].childNodes[rowIndex].getAttribute(columnAlpha).replace(/,/g,""))) {
+					//alert("Only numeric values are allowed for "+ cellName +" at row: "+ ++rowIndex);
+					ShowErrorOnGrid(grid, rowIndex, columnIndex, "Error", "Only integer values are allowed (No Decimal)");
+					return false;
+				}
+			}
+			else if(trim(input[1])=="date") {
+				if (!isValidDateWithFormat(data.childNodes[0].childNodes[rowIndex].getAttribute(columnAlpha))) {
+					//alert("Date is not valid for "+ cellName +" at row: "+ ++rowIndex +" \nDate Format is DD/MM/YYYY");
+					ShowErrorOnGrid(grid, rowIndex, columnIndex, "Error", "Date is not valid. \nDate Format is DD/MM/YYYY");
+					return false;
+				}
+			}
+			
+			//if decimal or number value, remove comma(,) and then check length
+			if(trim(input[1])=="decimal" || trim(input[1])=="number") {
+				//length
+				if (grid.object.getCellText(rowIndex, columnIndex).replace(/,/g,"").length > length[1]) {
+					//alert("Length cannot be greater than "+ length[1] +" for "+ cellName +" at row: "+ ++rowIndex);
+					ShowErrorOnGrid(grid, rowIndex, columnIndex, "Error", "Length cannot be greater than "+ length[1]);
+					return false;
+				}
+			}
+			else {
+				//length
+				if (grid.object.getCellText(rowIndex, columnIndex).length > length[1]) {
+					//alert("Length cannot be greater than "+ length[1] +" for "+ cellName +" at row: "+ ++rowIndex);
+					ShowErrorOnGrid(grid, rowIndex, columnIndex, "Error", "Length cannot be greater than "+ length[1]);
+					return false;
+				}
+			}
+		}
+		//rowIndex++;
+	//}
+	return true;
+}
+
+function TrimTo2DecimalValues(val) {
+	return val.substring(0, val.indexOf(".")+3);
+}
+
+function validateGridCelldhtmlx(mygrid, columnIndex, rowIndex, criteria, cellName) {
+
+	
+	
+	var filters = criteria.split(",");
+	var required = filters[0].split("=");
+	var input = filters[1].split("=");
+	var length = filters[2].split("=");
+		
+	
+		if(trim(required[1])=="true" ) {
+	
+			if (trim(mygrid.cells2(rowIndex, columnIndex).getValue()+'') == "") {
+				
+				//alert("Input required for "+ cellName +" at row: "+ rowIndex);
+				ShowErrorOnGriddhtmlx(mygrid, rowIndex, columnIndex, cellName, "Input Required");
+	
+				return false;
+			}
+		}
+		
+		if(trim(mygrid.cells2(rowIndex, columnIndex).getValue()+'')!= "") {
+		
+			if(trim(input[1])=="decimal") {
+				if (!isDecimal(mygrid.cells2(rowIndex, columnIndex).getValue()+'')) {
+					//alert("Only numeric or decimal values are allowed for "+ cellName +" at row: "+ rowIndex);
+					ShowErrorOnGriddhtmlx(mygrid, rowIndex, columnIndex, cellName, "Only numeric or decimal values are allowed");
+					return false;
+				}
+			}
+			else if(trim(input[1])=="gridText") {
+				if (!isValidTextForGrid(mygrid.cells2(rowIndex, columnIndex).getValue()+'')) {
+					//alert("Only alpha-Numeric values are allowed for "+ cellName +" at row: "+ rowIndex);
+					ShowErrorOnGriddhtmlx(mygrid, rowIndex, columnIndex, cellName, "Only alpha-Numeric values are allowed");
+					return false;
+				}
+			}
+			else if(trim(input[1])=="number") {
+		
+				if (!isNumberValid(mygrid.cells2(rowIndex, columnIndex).getValue()+'')) {
+					//alert("Only numeric values are allowed for "+ cellName +" at row: "+ rowIndex);
+					ShowErrorOnGriddhtmlx(mygrid, rowIndex, columnIndex, cellName, "Only integer values are allowed (No Decimal)");
+					return false;
+				}
+			}
+			else if(trim(input[1])=="date") {
+				if (!isValidDateWithFormat(mygrid.cells2(rowIndex, columnIndex).getValue()+'')) {
+					//alert("Date is not valid for "+ cellName +" at row: "+ rowIndex +" \nDate Format is DD/MM/YYYY");
+					ShowErrorOnGriddhtmlx(mygrid, rowIndex, columnIndex, cellName, "Date is not valid. \nDate Format is DD/MM/YYYY");
+					return false;
+				}
+			}
+			else if(trim(input[1])=="percentage") {
+				if (!isPercentage(mygrid.cells2(rowIndex, columnIndex).getValue()+'')) {
+					//alert("Date is not valid for "+ cellName +" at row: "+ rowIndex +" \nDate Format is DD/MM/YYYY");
+					ShowErrorOnGriddhtmlx(mygrid, rowIndex, columnIndex, cellName, "Percentage should be between 0 and 100");
+					return false;
+				}
+			}
+			
+			//if decimal or number value, remove comma(,) and then check length
+			if(trim(input[1])=="decimal" || trim(input[1])=="number") {
+				//length
+				if ((mygrid.cells2(rowIndex, columnIndex).getValue()+'').length > length[1]) {
+					//alert("Length cannot be greater than "+ length[1] +" for "+ cellName +" at row: "+ rowIndex);
+					ShowErrorOnGriddhtmlx(mygrid, rowIndex, columnIndex, cellName, "Length cannot be greater than "+ length[1]);
+					return false;
+				}
+			}
+			
+			else if(trim(input[1])=="NICNEW") {
+				if (!isValidNIC(mygrid.cells2(rowIndex, columnIndex).getValue()+'')) {
+					
+					ShowErrorOnGriddhtmlx(mygrid, rowIndex, columnIndex, cellName, "Invalid NIC No. CNIC Format should be(#####-#######-#)");
+					return false;
+				}
+			}
+			
+			else {
+				//length
+				if ((mygrid.cells2(rowIndex, columnIndex).getValue()+'').length > length[1]) {
+					//alert("Length cannot be greater than "+ length[1] +" for "+ cellName +" at row: "+ rowIndex);
+					ShowErrorOnGriddhtmlx(mygrid, rowIndex, columnIndex, cellName, "Length cannot be greater than "+ length[1]);
+					return false;
+				}
+			}
+		}
+
+	return true;
+}
+
+
+ function ShowErrorOnGriddhtmlx(mygrid, row, col, title, body) {  
+	
+	mygrid.selectCell(row, col);
+	
+    nitobi.callout.destroyLast(); 
+    
+    // now we create a new one  
+    var myCallout = new nitobi.callout.Callout("vista"); 
+    
+    // we attach it to the element with ID myName  
+    //
+    try {
+    	myCallout.attachToElement(mygrid.cells2(row, col).cell.id);
+    }
+    catch(err) {
+    	myCallout.attachToElement(mygrid.cells2(row, col).cell.uniqueID);
+    }
+    myCallout.setTitle(title);  
+    myCallout.setBody(body);  
+    // now we show it.  
+    myCallout.show();  
+   
+    //valueHistory[formField.id] = formField.value;  
+    
+}
+ 
+ 
+ 
+function isPercentage(value) {
+	if(value != "") {
+		if(parseFloat(value) > 0.00 && parseFloat(value) < 100.00) {
+			return true;
+		}
+	}
+	return false;
+}
+ 
+
+	function enableBankBranch()
+	{
+		var paMode=document.getElementById("cmbModeOfPayment").value;
+		document.getElementById("mode").value = paMode;			
+		
+		if(paMode=="Select")
+		{					
+			document.getElementById("bankBranch").disabled = false;
+			document.getElementById('bankBranchURL').style.visibility='hidden';	
+			document.getElementById("visamaster").style.visibility='hidden';	
+			document.getElementById("card_charges").style.visibility='hidden';	
+			//document.getElementById("adc_charges").style.visibility='hidden';	
+			document.getElementById("bankBranch").value='';
+		}
+		else if(paMode=="Bank Challan")
+		{					
+			document.getElementById("bankBranch").disabled = false;
+			document.getElementById("visamaster").style.visibility='hidden';	
+			document.getElementById("card_charges").style.visibility='hidden';	
+			//document.getElementById("adc_charges").style.visibility='hidden';	
+			document.getElementById('bankBranchURL').style.visibility='visible';	
+			if(document.getElementById("bankBranch").value=='Credit Card' || document.getElementById("bankBranch").value=='ADC/ePayment')
+				document.getElementById("bankBranch").value='';
+			
+			}
+		else if(paMode=="ADC/ePayment")
+		{					
+			document.getElementById("bankBranch").disabled = false;
+			document.getElementById("visamaster").style.visibility='hidden';	
+			document.getElementById('bankBranchURL').style.visibility='hidden';	
+			document.getElementById("bankBranch").value='ADC/ePayment';
+			document.getElementById("card_charges").style.visibility='visible';
+			document.getElementById("card_charges").innerHTML = "1Link collection chargers of Rs.25 will be applicable";
+		}
+		else
+		{
+			document.getElementById("bankBranch").disabled = false;
+			document.getElementById('bankBranchURL').style.visibility='hidden';
+			document.getElementById("bankBranch").value='Credit Card';
+			document.getElementById("visamaster").style.visibility='visible';
+			document.getElementById("card_charges").style.visibility='visible';
+			document.getElementById("card_charges").innerHTML = "Collection charges 3.7% of total fee will be applicable";
+			
+		}
+		
+	}
+
+function doCheck(e) {
+	   
+    var code;
+      if (!e) var e = window.event; // some browsers don't pass e, so get it from the window
+    if (e.keyCode) code = e.keyCode; // some browsers use e.keyCode
+    else if (e.which) code = e.which;  // others use e.which
+  
+    if ( code == 46)
+        return false;
+}
+
+
+
